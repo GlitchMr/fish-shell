@@ -1,4 +1,3 @@
-
 function fish_default_key_bindings -d "Default (Emacs-like) key bindings for fish"
 
 	# Clear earlier bindings, if any
@@ -89,6 +88,9 @@ function fish_default_key_bindings -d "Default (Emacs-like) key bindings for fis
 	bind \cw backward-kill-path-component
         bind \ed 'set -l cmd (commandline); if test -z "$cmd"; echo; dirh; commandline -f repaint; else; commandline -f kill-word; end'
 	bind \cd delete-or-exit
+
+	# Show manpage after pressing F1.
+	bind -k f1 'man (commandline -po; echo)[1] ^/dev/null; or echo -n \a'
 
 	# This will make sure the output of the current command is paged using the less pager when you press Meta-p
 	bind \ep '__fish_paginate'
