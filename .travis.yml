@@ -1,0 +1,18 @@
+language: cpp
+
+before_install:
+- sudo apt-get install -y libncurses5-dev doxygen gettext
+# Temponary hack for autoconf problem.
+- touch fish
+
+install:
+- autoconf
+- ./configure
+- sudo make install
+
+script:
+- make test
+
+compiler:
+- clang
+- gcc
